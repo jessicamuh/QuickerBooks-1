@@ -14,6 +14,8 @@ using QuickerBooksApp.Models;
 
 namespace QuickerBooksApp.Controllers
 {
+
+   
     [Authorize]
     public class AccountController : Controller
     {
@@ -53,6 +55,11 @@ namespace QuickerBooksApp.Controllers
             {
                 _userManager = value;
             }
+        }
+
+        public ActionResult Confirmation()
+        {
+            return View();
         }
 
         //
@@ -146,6 +153,9 @@ namespace QuickerBooksApp.Controllers
                                             .ToList(), "Name", "Name");
             return View();
         }
+
+
+
 
         //
         // POST: /Account/Register
