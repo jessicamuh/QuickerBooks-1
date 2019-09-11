@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
 using QuickerBooksApp.Models;
 
-namespace shanuMVCUserRoles.Controllers
+namespace QuickerBooksApp.Controllers
 {
     [Authorize]
     public class RoleController : Controller
