@@ -34,9 +34,9 @@ namespace QuickerBooksApp
                 //Here we create a Admin super user who will maintain the website                  
 
                 var user = new ApplicationUser();
-                user.UserName = "aawodu0919";
-                user.Email = "ayomideawodu@yahoo.com";
-                string userPWD = "Momoland123!";
+                user.UserName = "admin";
+                user.Email = "quickerbooks123@gmail.com";
+                string userPWD = "Password123!";
 
                 var checkUser = UserManager.Create(user, userPWD);
 

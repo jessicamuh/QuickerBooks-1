@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using QuickerBooksApp.Models;
 
+
 namespace QuickerBooksApp.Controllers
 {
     [Authorize]
