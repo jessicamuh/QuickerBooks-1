@@ -9,33 +9,30 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
         <div class="container">
-            <div class="navbar-header">
-                <div class="navbar-header pull-left">
-                    <a class="navbar-brand" href="@Url.Action("Index", "Home")">
-                        <img src="~/Images/logo.png" a width="50" height="50" alt="Site Logo"  />
-                    </a>
-                </div>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-               @Html.ActionLink("Quicker Books", "Index", "Home", null, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
+            <img src="~/Images/logo.png" width="80" height="40" alt="Site Logo" />
+            <a class="navbar-brand" href="/">Quicker Books</a>
+            <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+
+                <ul class="nav navbar-nav navbar-right ml-auto">
+                    <li class="nav-item"><a href="/Account/Register" id="registerLink" class="nav-link">Register</a></li>
+                    <li class="nav-item"><a href="/Account/Login" id="loginLink" class="nav-link">Log in</a></li>
+                </ul>
+
             </div>
         </div>
-    </div>
+    </nav>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <!––  <p>&copy; @DateTime.Now.Year -Quicker Books</p>  ––>
+         <p>&copy; @DateTime.Now.Year -Quicker Books</p>
         </footer>
     </div>
 

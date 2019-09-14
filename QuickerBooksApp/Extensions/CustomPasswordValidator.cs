@@ -16,10 +16,7 @@ namespace QuickerBooksApp.Extensions
             RequiredLength = length;
         }
 
-        /* 
-         * logic to validate password: I am using regex to count how many 
-         * types of characters exists in the password
-         */
+      
         public Task<IdentityResult> ValidateAsync(string password)
         {
             if (String.IsNullOrEmpty(password) || password.Length < RequiredLength)
@@ -27,24 +24,28 @@ namespace QuickerBooksApp.Extensions
                 return Task.FromResult(IdentityResult.Failed( String.Format("Password should be at least {0} characters", RequiredLength)));
             }
 
-      
-            List<string> patterns = new List<string>();
-            patterns.Add(@"[a-z]");                                          // lowercase
-            patterns.Add(@"[A-Z]");                                          // uppercase
-            patterns.Add(@"[0-9]");                                          // digits                                                                
-            patterns.Add(@"[!@#$%^&*\(\)_\+\-\={}<>,\.\|""'~`:;\\?\/\[\] ]"); // special symbols
-
-            char c = password[0];
-            if (!c.Equals("^[A-Z].*$") || !c.Equals("^[a-z].*$"))
-            {
+            //  string pattern = (@"[a-zA-Z]+");
+            string s = password.Substring(0, 1);
+            if (!Regex.Match(s, "^[a-zA-Z]").Success) {
                 return Task.FromResult(IdentityResult.Failed("Password must start with a letter"));
             }
+
+                /*  string s = password.Substring(0, 1);
+                  if (!s.Equals(@"^[A-Z]") || !s.Equals(@"^[a-z]"))
+                  {
+                      return Task.FromResult(IdentityResult.Failed("Password must start with a letter"));
+                  }*/
+
+                List<string> patterns = new List<string>();
+            patterns.Add(@"[a-zA-Z]+");                                      // lowercase & uppercase
+            patterns.Add(@"[0-9]");                                          // digits                                                                
+            patterns.Add(@"[!@#$%^&*\(\)_\+\-\={}<>,\.\|""'~`:;\\?\/\[\] ]"); // special symbols
 
             foreach (string p in patterns)
                 {
                     if (!Regex.IsMatch(password, p))
                     {
-                        return Task.FromResult(IdentityResult.Failed("Password must contain a letter, number"));      
+                        return Task.FromResult(IdentityResult.Failed("Password must contain a letter, number and special character"));      
                     }        
                 }
             return Task.FromResult(IdentityResult.Success);

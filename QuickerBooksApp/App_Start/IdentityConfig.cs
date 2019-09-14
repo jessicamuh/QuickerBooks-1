@@ -30,9 +30,9 @@ namespace QuickerBooksApp
 
         private async Task configSendGridasync(IdentityMessage message)
         {
-            var apiKey = "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";
+            var apiKey = "";
             var client = new SendGridClient(apiKey);
-            var from = new EmailAddress("ayomideawodu@gmail.com", "noreply-admin");
+            var from = new EmailAddress("quickerbooks123@gmail.com", "noreply-admin");
             var subject = message.Subject;
             var to = new EmailAddress("quickerbooks123@gmail.com", "admin");
             var plainTextContent = message.Body;
