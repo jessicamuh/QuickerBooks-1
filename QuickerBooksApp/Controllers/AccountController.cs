@@ -175,7 +175,10 @@ namespace QuickerBooksApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+                var user = new ApplicationUser {UserName = model.UserName, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName,
+                DOB = model.DOB, PhoneNumber = model.Number};
+                user.UserName = "test";
+                //UserName = model.UserName
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -189,12 +192,15 @@ namespace QuickerBooksApp.Controllers
                     //Assign Role to user Here   
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
                     //Ends Here 
+                    string uEmail = model.Email;
+                    string name = "Confirmation for" + model.FirstName + " " + model.LastName + ". Email: " + uEmail;
+
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account",
                        new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id,
-                       "Confirm your account", "Please confirm user's account by clicking <a href=\""
-                       + callbackUrl + "\">here</a>");
+                       "Confirm Account", "\nA new user has registerd an account. Please confirm the user's account by clicking <a href=\""
+                       + callbackUrl + "\">this link</a>");
 
                     // Uncomment to debug locally 
                      //TempData["ViewBagLink"] = callbackUrl;

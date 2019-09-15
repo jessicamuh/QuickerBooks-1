@@ -6,10 +6,15 @@
 
 @if (ViewBag.displayMenu == "Yes")
 {
-    <h1>Welcome Admin. Now you can create user Roles.</h1>
-    <h3>
+    <h1>Welcome Admin.</h1>
+    <h2>
         <li>@Html.ActionLink("Manage Role", "Index", "Role")</li>
-    </h3>
+    </h2>
+   
+    <h2>
+        <li>@Html.ActionLink("Email", "Index", "Role")</li>
+    </h2>
+
 }
 else
 {
