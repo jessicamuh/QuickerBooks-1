@@ -111,7 +111,16 @@ namespace QuickerBooksApp.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> SendgridEmailSubmit(EmailModels emailmodel)
+        {
+            ViewData["Message"] = "Email Sent!!!...";
+            Example emailexample = new Example();
+            await emailexample.Execute(emailmodel.From, emailmodel.To, emailmodel.CC, emailmodel.Subject, emailmodel.Body
+                , emailmodel.Body);
 
+            return View("Email");
+        }
 
     }
 }
