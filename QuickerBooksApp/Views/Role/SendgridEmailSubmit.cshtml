@@ -1,8 +1,7 @@
-﻿@model EmailModels
-@{
-    ViewData["Title"] = "Email";
+﻿@{
+ViewData["Title"] = "SendgridEmailSubmit";
+// ViewBag.Title = "SendgridEmailSubmit";
 }
-
 <h2>Sendgrid Email Api Inetegration</h2>
 <form asp-action="SendgridEmailSubmit" asp-controller="Role" method="post">
     <table style="padding:20px;">
@@ -34,4 +33,4 @@
             <td><input type="submit" value="Send Email" /></td>
         </tr>
     </table>
-</form> 
+</form>

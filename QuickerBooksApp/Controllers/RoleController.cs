@@ -144,7 +144,8 @@ namespace QuickerBooksApp.Controllers
             await emailexample.ExecuteAsync(emailmodel.From, emailmodel.To, emailmodel.CC, emailmodel.Subject, emailmodel.Body
                 , emailmodel.Body);
 
-            return View("Email");
+           // return View("Email");
+            return View();
         }
     }
 
