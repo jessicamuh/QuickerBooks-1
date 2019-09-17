@@ -177,8 +177,16 @@ namespace QuickerBooksApp.Controllers
             {
                 var user = new ApplicationUser {UserName = model.UserName, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName,
                 DOB = model.DOB, PhoneNumber = model.Number};
-                user.UserName = "test";
-                //UserName = model.UserName
+
+                string fName = model.FirstName;
+                string cName = fName.Substring(0, 1);
+                string lName = model.LastName;
+                string month = DateTime.Now.Month.ToString("00");
+                string year = DateTime.Now.ToString("yy");
+                string uName = cName + lName + month + year;
+                string lowUName = uName.ToLower();
+                user.UserName = lowUName;
+            
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

@@ -6,6 +6,11 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
 using QuickerBooksApp.Models;
+using System.Threading.Tasks;
+using System.Configuration;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using static QuickerBooksApp.Controllers.RoleController;
 
 namespace QuickerBooksApp.Controllers
 {
@@ -69,7 +74,7 @@ namespace QuickerBooksApp.Controllers
         public ActionResult Create()
         {
             if (User.Identity.IsAuthenticated)
-            {
+            { 
 
 
                 if (!isAdminUser())
@@ -111,7 +116,37 @@ namespace QuickerBooksApp.Controllers
             return RedirectToAction("Index");
         }
 
+        internal class Mail
+        {
+            private static void Main()
+            {
 
+            }
+
+            internal async Task ExecuteAsync(string From, string TO, string subject, string CC, string plainTextContent, string htmlContent)
+            {
+                var apiKey = ConfigurationManager.AppSettings["SendGridApiKey"];
+                var client = new SendGridClient(apiKey);
+                var from = new EmailAddress("quickerbooks123@gmail.com", "Admin");
+                var to = new EmailAddress(TO);
+                var cc = new EmailAddress(CC);
+                htmlContent = "<strong>" + htmlContent + "</strong>";
+                var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+                var response = await client.SendEmailAsync(msg);
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> SendgridEmailSubmit(EmailModels emailmodel)
+        {
+            ViewData["Message"] = "Email Sent!!!...";
+            Mail emailexample = new Mail();
+            await emailexample.ExecuteAsync(emailmodel.From, emailmodel.To, emailmodel.CC, emailmodel.Subject, emailmodel.Body
+                , emailmodel.Body);
+
+           // return View("Email");
+            return View();
+        }
+    }
 
     }
-}
