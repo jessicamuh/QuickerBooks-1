@@ -215,6 +215,7 @@ namespace QuickerBooksApp.Controllers
             }
         }
 
+
         //
         // GET: /Account/Register
         [AllowAnonymous]
@@ -300,6 +301,7 @@ namespace QuickerBooksApp.Controllers
                                             .ToList(), "Name", "Name");
             return View();
         }
+
 
         //
         // POST: /Account/Register
