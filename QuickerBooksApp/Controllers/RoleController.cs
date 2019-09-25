@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 using System.Configuration;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using static QuickerBooksApp.Controllers.RoleController;
+using QuickerBooksApp.Models;
+
 
 namespace QuickerBooksApp.Controllers
 {
@@ -136,10 +137,26 @@ namespace QuickerBooksApp.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<ActionResult> SendgridEmailSubmit(EmailModels emailmodel)
+
+        //
+        // GET: Email
+        [AllowAnonymous]
+        public ActionResult SendGridEmailSubmit(string returnUrl)
         {
-            ViewData["Message"] = "Email Sent!!!...";
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> SendgridEmailSubmit(EmailViewModel emailmodel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(emailmodel);
+            }
+
+            ViewBag.Message = "Email Sent!!!...";
             Mail emailexample = new Mail();
             await emailexample.ExecuteAsync(emailmodel.From, emailmodel.To, emailmodel.CC, emailmodel.Subject, emailmodel.Body
                 , emailmodel.Body);
