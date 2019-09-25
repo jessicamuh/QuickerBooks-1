@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -221,8 +222,11 @@ namespace QuickerBooksApp.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+
             ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Administrator"))
                                             .ToList(), "Name", "Name");
+            //  ViewBag.Name = uRoles;
+
             return View();
         }
 
@@ -282,7 +286,7 @@ namespace QuickerBooksApp.Controllers
                     //return RedirectToAction("Index", "Users");
                 }
                 ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Administrator"))
-                                          .ToList(), "Name", "Name");
+                                           .ToList(), "Name", "Name");
                 AddErrors(result);
             }
 
@@ -291,18 +295,18 @@ namespace QuickerBooksApp.Controllers
         }
 
 
-
+        
         //
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult TempRegister()
         {
-            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Administrator"))
+            ViewBag.uRoles = new SelectList(context.Roles.Where(u => !u.Name.Contains("Administrator"))
                                             .ToList(), "Name", "Name");
             return View();
         }
 
-
+     
         //
         // POST: /Account/Register
         [HttpPost]
@@ -365,8 +369,8 @@ namespace QuickerBooksApp.Controllers
                     // return RedirectToAction("Index", "Home");
                     //return RedirectToAction("Index", "Users");
                 }
-                ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Administrator"))
-                                          .ToList(), "Name", "Name");
+                ViewBag.uRoles = new SelectList(context.Roles.Where(u => !u.Name.Contains("Administrator"))
+                                            .ToList(), "Name", "Name");
                 AddErrors(result);
             }
 
