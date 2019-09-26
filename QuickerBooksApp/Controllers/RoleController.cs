@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using QuickerBooksApp.Models;
+
 
 
 namespace QuickerBooksApp.Controllers
