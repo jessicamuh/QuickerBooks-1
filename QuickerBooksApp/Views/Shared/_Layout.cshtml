@@ -53,10 +53,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>QUICKER BOOKS</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    @*@<link rel="stylesheet" type="text/css" href="~/Calculator/jquery.calculator.css">
-    <script type="text/javascript" src="~/Calculator/jquery.plugin.js"></script>
-    <script type="text/javascript" src="~/Calculator/jquery.calculator.js"></script>*@
+    @Styles.Render("~/AdminLTE/plugins/font-awesome/css")
+    @Styles.Render("~/AdminLTE/plugins/ionicons/css")
+    @Styles.Render("~/AdminLTE/bootstrap/css")
+    @Styles.Render("~/AdminLTE/dist/css")
+    @Styles.Render("~/AdminLTE/dist/css/skins")
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -71,7 +73,7 @@
                 </a>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                       @** <li class="dropdown messages-menu">
+                      <li class="dropdown messages-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope-o"></i>
                                 <span class="label label-success"></span>
@@ -145,7 +147,7 @@
                                 </li>
                                 <li class="footer"><a href="#">See All Messages</a></li>
                             </ul>
-                        </li>*@
+                        </li>
                         <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-question-circle"></i>
@@ -252,12 +254,7 @@
                         </ul>
                     </li>
 
-                    <li id="left-sidebar-menu-documentation">
-                        <a href="@Url.Action("Index", "Accounts")">
-                            <i class="fa fa-book"></i>
-                            <span>Accounts</span>
-                        </a>
-                    </li>
+                   
 
                     <li id="left-sidebar-menu-documentation">
                         <a href="@Url.Action("Create", "Role")">
