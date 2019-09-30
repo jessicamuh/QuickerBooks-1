@@ -360,7 +360,7 @@ namespace QuickerBooksApp.Controllers
             if (user != null)
             {
               
-                return user.PasswordHash != null;
+               // return user.PasswordHash != null;
             }
             return false;
         }
@@ -370,7 +370,7 @@ namespace QuickerBooksApp.Controllers
             var user = UserManager.FindById(User.Identity.GetUserId());
             if (user != null)
             {
-                return user.PhoneNumber != null;
+               // return user.PhoneNumber != null;
             }
             return false;
         }

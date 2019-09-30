@@ -1,0 +1,147 @@
+﻿@model IEnumerable<QuickerBooksApp.Models.AccountsModel>
+
+@{
+                /**/
+
+                ViewBag.Title = "View Accounts";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Accounts</title>
+    <style type="text/css">
+        body {
+            font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 12pt;
+        }
+
+        table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            background-color: #fff;
+            width: 400px
+        }
+
+            table th {
+                background-color: #3c8dbc;
+                color: #333;
+                font-weight: bold;
+            }
+
+            table th, table td {
+                padding: 5px;
+                border: 1px solid #ccc;
+            }
+
+            table, table table td {
+                border: 0px solid #ccc;
+            }
+
+        input[type=text], select {
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NormalSide)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountSubcategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InitialBalance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Debit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Credit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Balance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NormalSide)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountCategory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountSubcategory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InitialBalance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Debit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Credit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Balance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountOrder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountState)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>
