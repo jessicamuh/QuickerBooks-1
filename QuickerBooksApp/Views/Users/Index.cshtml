@@ -1,20 +1,21 @@
-﻿@{
+﻿@*
+ @{
                 /**/
 
                 /**/
 
-                Layout = "~/Views/Users/AdminLayout.cshtml";
+                Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 
 @if (ViewBag.displayMenu == "Yes")
 {
-    <meta http-equiv="refresh" content"0;AdminLayout.html">
+    
 }
 
 else
 {
     < h2 > Welcome < strong > @ViewBag.Name </ strong >.We will add user module soon </ h2 >
 }
-
+    *@
