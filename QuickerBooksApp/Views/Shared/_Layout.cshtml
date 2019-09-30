@@ -9,32 +9,34 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
-            <img src="~/Images/logo.png" width="80" height="40" alt="Site Logo" />
-            <a class="navbar-brand" href="/">Quicker Books</a>
-            <div class="navbar-collapse collapse" id="navbarSupportedContent">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                </ul>
+    <!-- @if (Session["isAuthenticated"] != null)
+     {
+         <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
+             <div class="container">
+                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
+                 <img src="~/Images/logo.png" width="80" height="40" alt="Site Logo" />
+                 <a class="navbar-brand" href="/">Quicker Books</a>
+                 <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                     <ul class="nav navbar-nav mr-auto">
+                         <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                     </ul>
 
-                <ul class="nav navbar-nav navbar-right ml-auto">
-                    <li class="nav-item"><a href="/Account/Register" id="registerLink" class="nav-link">Register</a></li>
-                    <li class="nav-item"><a href="/Account/Login" id="loginLink" class="nav-link">Log in</a></li>
-                </ul>
+                     <ul class="nav navbar-nav navbar-right ml-auto">
+                         <li class="nav-item"><a href="/Account/Register" id="registerLink" class="nav-link">Register</a></li>
+                         <li class="nav-item"><a href="/Account/Login" id="loginLink" class="nav-link">Log in</a></li>
+                     </ul>
 
-            </div>
-        </div>
-    </nav>
-
+                 </div>
+             </div>
+         </nav>
+     }
+        -->
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-         <p>&copy; @DateTime.Now.Year -Quicker Books</p>
-        </footer>
+
     </div>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

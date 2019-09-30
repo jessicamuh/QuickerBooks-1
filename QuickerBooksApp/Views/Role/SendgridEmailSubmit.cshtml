@@ -1,36 +1,91 @@
-﻿@{
-ViewData["Title"] = "SendgridEmailSubmit";
-// ViewBag.Title = "SendgridEmailSubmit";
+﻿@using QuickerBooksApp.Models
+@model EmailViewModel
+@{
+                /**/
+
+                /**/
+
+                /**/
+
+                Layout = null;
 }
-<h2>Sendgrid Email Api Inetegration</h2>
-<form asp-action="SendgridEmailSubmit" asp-controller="Role" method="post">
-    <table style="padding:20px;">
-        <tr>
-            <td>From</td>
-            <td>  <input asp-for="From" /></td>
-            <td><br /></td>
-        </tr>
-        <tr>
-            <td>To</td>
-            <td>  <input asp-for="To" /></td>
-        </tr>
-        <tr>
-            <td>CC</td>
-            <td>  <input asp-for="CC" /></td>
-        </tr>
-        <tr>
-            <td>Subject</td>
-            <td>  <input asp-for="Subject" /></td>
-        </tr>
-        <tr>
-            <td>
-                Body
-            </td>
-            <td>  <input asp-for="Body" /></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" value="Send Email" /></td>
-        </tr>
-    </table>
-</form>
+
+<!DOCTYPE html>
+<html lang="zxx">
+<!-- Head -->
+
+<head>
+    <title>EMAIL :: QUICKER BOOKS</title>
+    <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Quicker Books Login">
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta-Tags -->
+    <!-- Index-Page-CSS -->
+    <link rel="stylesheet" href="~/Templates/Login/web/css/style.css" type="text/css" media="all">
+    <!-- //Custom-Stylesheet-Links -->
+    <!--fonts -->
+    <!-- //fonts -->
+    <link rel="stylesheet" href="~/Templates/Login/web/css/font-awesome.min.css" type="text/css" media="all">
+    <!-- //Font-Awesome-File-Links -->
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Mukta:200,300,400,500,600,700,800" rel="stylesheet">
+    <!-- Google fonts -->
+
+</head>
+<!-- //Head -->
+<!-- Body -->
+
+<body>
+    <section class="main">
+        <div class="layer">
+            <h2>Email Service</h2>
+            @using (Html.BeginForm("SendgridEmailSubmit", "Role", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                <table style="padding:20px;">
+                    <tr>
+                        <td>From</td>
+                        <td>  <input asp-for="From" /></td>
+                        <td><br /></td>
+                    </tr>
+                    <tr>
+                        <td>To</td>
+                        <td>  <input asp-for="To" /></td>
+                    </tr>
+                    <tr>
+                        <td>CC</td>
+                        <td>  <input asp-for="CC" /></td>
+                    </tr>
+                    <tr>
+                        <td>Subject</td>
+                        <td>  <input asp-for="Subject" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Body
+                        </td>
+                        <td>  <input asp-for="Body" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Send Email" /></td>
+                    </tr>
+                </table>
+            }
+
+        </div>
+    </section>
+
+</body>
+<!-- //Body -->
+</html>
