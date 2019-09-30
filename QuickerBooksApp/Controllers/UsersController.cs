@@ -23,6 +23,7 @@ namespace QuickerBooksApp.Controllers
                 ApplicationDbContext context = new ApplicationDbContext();
                 var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
                 var s = UserManager.GetRoles(user.GetUserId());
+                 
                 if (s[0].ToString() == "Administrator")
                 {
                     return true;
@@ -50,7 +51,7 @@ namespace QuickerBooksApp.Controllers
                 {
                     ViewBag.displayMenu = "Yes";
                 }
-                return View();
+              //  return View();
             }
             else
             {
@@ -58,7 +59,7 @@ namespace QuickerBooksApp.Controllers
             }
 
 
-            return View();
+           return View();
 
 
         }
