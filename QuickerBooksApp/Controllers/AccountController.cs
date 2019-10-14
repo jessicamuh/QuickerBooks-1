@@ -87,7 +87,9 @@ namespace QuickerBooksApp.Controllers
             var user = await UserManager.FindByNameAsync(model.UserName);
             if (user != null)
             {
+                user.LastLogin = DateTime.Now;
                 if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+
                 {
                     ViewBag.errorMessage = "You must have a confirmed email to log on.";
                     return View("Error");

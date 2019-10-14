@@ -55,7 +55,7 @@ namespace QuickerBooksApp.Controllers
 
         public ActionResult View(AccountsModel model)
         {
-            return View(model);
+            return View();
         }
     }
 }
