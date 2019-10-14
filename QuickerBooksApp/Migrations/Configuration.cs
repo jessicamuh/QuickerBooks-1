@@ -10,7 +10,6 @@ namespace QuickerBooksApp.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            ContextKey = "QuickerBooksApp.Models.ApplicationDbContext";
         }
 
         protected override void Seed(QuickerBooksApp.Models.ApplicationDbContext context)

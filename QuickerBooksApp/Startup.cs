@@ -53,6 +53,19 @@ namespace QuickerBooksApp
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                 role.Name = "Manager";
                 roleManager.Create(role);
+
+                var user = new ApplicationUser();
+                user.UserName = "manager";
+                user.Email = "manager@qb.com";
+                string userPWD = "Password123!";
+
+                var checkUser = UserManager.Create(user, userPWD);
+
+                //Add default User to Role Admin   
+                if (checkUser.Succeeded)
+                {
+                    var result1 = UserManager.AddToRole(user.Id, "Manager");
+                }
             }
 
             //Create regular user role    
@@ -61,6 +74,19 @@ namespace QuickerBooksApp
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                 role.Name = "User";
                 roleManager.Create(role);
+
+                var user = new ApplicationUser();
+                user.UserName = "accountant";
+                user.Email = "accountant@qb.com";
+                string userPWD = "Password123!";
+
+                var checkUser = UserManager.Create(user, userPWD);
+
+                //Add default User to Role Admin   
+                if (checkUser.Succeeded)
+                {
+                    var result1 = UserManager.AddToRole(user.Id, "User");
+                }
             }
 
         }

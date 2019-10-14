@@ -23,6 +23,7 @@ namespace QuickerBooksApp.Models
         public int AccountOrder { get; set; }
         public string AccountState { get; set; }
         public string Comment { get; set; }
+        public string Term { get; set; }
 
 
     }

@@ -20,10 +20,10 @@ namespace QuickerBooksApp.Controllers
         [HttpPost]
         public ActionResult Index(AccountsModel account)
         {
-            string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(constr))
+            var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            using (var con = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO Accounts(AccountName, AccountNumber, AccountDescription, NormalSide, AccountCategory, AccountSubcategory, InitialBalance, Debit, Credit, Balance, AccountOrder, AccountState, Comment) VALUES(@AccountName, @AccountNumber, @AccountDescription, @NormalSide, @AccountCategory, @AccountSubcategory, @InitialBalance, @Debit, @Credit, @Balance, @AccountOrder, @AccountState, @Comment)";
+                string query = "INSERT INTO Accounts(AccountName, AccountNumber, AccountDescription, NormalSide, AccountCategory, AccountSubcategory, InitialBalance, Debit, Credit, Balance, AccountOrder, AccountState, Comment, Term) VALUES(@AccountName, @AccountNumber, @AccountDescription, @NormalSide, @AccountCategory, @AccountSubcategory, @InitialBalance, @Debit, @Credit, @Balance, @AccountOrder, @AccountState, @Comment, @Term)";
                 query += " SELECT SCOPE_IDENTITY()";
                 using (SqlCommand cmd = new SqlCommand(query))
                 {
@@ -42,6 +42,8 @@ namespace QuickerBooksApp.Controllers
                     cmd.Parameters.AddWithValue("@AccountOrder", account.AccountOrder);
                     cmd.Parameters.AddWithValue("@AccountState", account.AccountState);
                     cmd.Parameters.AddWithValue("@Comment", account.Comment);
+                    cmd.Parameters.AddWithValue("@Term", account.Term);
+
 
 
                     con.Close();
@@ -51,9 +53,9 @@ namespace QuickerBooksApp.Controllers
             return View(account);
         }
 
-        public ActionResult View(AccountsModel account)
+        public ActionResult View(AccountsModel model)
         {
-            return View();
+            return View(model);
         }
     }
 }

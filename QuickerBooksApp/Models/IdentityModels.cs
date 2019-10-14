@@ -20,6 +20,7 @@ namespace QuickerBooksApp.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DOB { get; set; }
+        public virtual DateTime? LastLogin { get; set; }
     }
 
         public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
