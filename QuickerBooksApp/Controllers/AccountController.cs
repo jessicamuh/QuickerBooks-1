@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -87,7 +88,7 @@ namespace QuickerBooksApp.Controllers
             var user = await UserManager.FindByNameAsync(model.UserName);
             if (user != null)
             {
-                user.LastLogin = DateTime.Now;
+                
                 if (!await UserManager.IsEmailConfirmedAsync(user.Id))
 
                 {
@@ -103,6 +104,7 @@ namespace QuickerBooksApp.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    user.LastLogin = DateTime.Now;
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -145,7 +147,7 @@ namespace QuickerBooksApp.Controllers
            
             if (user != null)
             {
-                user.LastLogin = DateTime.Now;
+             
                 if (!await UserManager.IsEmailConfirmedAsync(user.Id))
                 {
                     ViewBag.errorMessage = "You must have a confirmed email to log on.";
@@ -157,10 +159,20 @@ namespace QuickerBooksApp.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe,  shouldLockout: false);
+
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    {
+                        ApplicationDbContext db = new ApplicationDbContext();
+                        View logged = db.View.SingleOrDefault();
+                        Session["lastLoggedTime"] = logged.LastLogin;
+                        logged.LastLogin = DateTime.Now;
+                        db.Entry(logged).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToLocal(returnUrl);
+                    }
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -170,16 +182,15 @@ namespace QuickerBooksApp.Controllers
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
             }
+          
         }
 
+       
+       
 
-
-
-
-
-        //
-        // GET: /Account/VerifyCode
-        [AllowAnonymous]
+            //
+            // GET: /Account/VerifyCode
+            [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
             // Require that the user has already logged in via username/password or external login

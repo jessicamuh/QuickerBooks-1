@@ -11,8 +11,8 @@ namespace QuickerBooksApp
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
-            createRolesandUsers();
+           ConfigureAuth(app);
+           createRolesandUsers();
         }
 
         //Create default User roles and Admin user for login   
@@ -43,7 +43,7 @@ namespace QuickerBooksApp
                 //Add default User to Role Admin   
                 if (checkUser.Succeeded)
                 {
-                    var result1 = UserManager.AddToRole(user.Id, "Administrator");
+                    var result = UserManager.AddToRole(user.Id, "Administrator");
                 }
             }
 
@@ -54,17 +54,17 @@ namespace QuickerBooksApp
                 role.Name = "Manager";
                 roleManager.Create(role);
 
-                var user = new ApplicationUser();
-                user.UserName = "manager";
-                user.Email = "manager@qb.com";
-                string userPWD = "Password123!";
+                var user1 = new ApplicationUser();
+                user1.UserName = "manager";
+                user1.Email = "manager@qb.com";
+                string user1PWD = "Password123!";
 
-                var checkUser = UserManager.Create(user, userPWD);
+                var checkUser1 = UserManager.Create(user1, user1PWD);
 
                 //Add default User to Role Admin   
-                if (checkUser.Succeeded)
+                if (checkUser1.Succeeded)
                 {
-                    var result1 = UserManager.AddToRole(user.Id, "Manager");
+                    var result1 = UserManager.AddToRole(user1.Id, "Manager");
                 }
             }
 
@@ -75,17 +75,17 @@ namespace QuickerBooksApp
                 role.Name = "User";
                 roleManager.Create(role);
 
-                var user = new ApplicationUser();
-                user.UserName = "accountant";
-                user.Email = "accountant@qb.com";
-                string userPWD = "Password123!";
+                var user2 = new ApplicationUser();
+                user2.UserName = "accountant";
+                user2.Email = "accountant@qb.com";
+                string user2PWD = "Password123!";
 
-                var checkUser = UserManager.Create(user, userPWD);
+                var checkUser2 = UserManager.Create(user2, user2PWD);
 
-                //Add default User to Role Admin   
-                if (checkUser.Succeeded)
+                //Add default User to Role User 
+                if (checkUser2.Succeeded)
                 {
-                    var result1 = UserManager.AddToRole(user.Id, "User");
+                    var result2 = UserManager.AddToRole(user2.Id, "User");
                 }
             }
 

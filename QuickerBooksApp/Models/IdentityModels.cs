@@ -21,15 +21,16 @@ namespace QuickerBooksApp.Models
         public string LastName { get; set; }
         public DateTime DOB { get; set; }
         public virtual DateTime? LastLogin { get; set; }
+        public string State { get; set; }
     }
 
         public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
+        public DbSet<View> View { get; set; }
+    public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
-
+        { }
+      
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

@@ -65,6 +65,9 @@ namespace QuickerBooksApp.Models
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
 
+        [Display(Name = "State")]
+        public string State { get; set; }
+
         [Display(Name = "Last Login")]
         public virtual DateTime? LastLogin { get; set; }
     }

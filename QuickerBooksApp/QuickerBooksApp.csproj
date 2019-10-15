@@ -8014,7 +8014,7 @@
     <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
